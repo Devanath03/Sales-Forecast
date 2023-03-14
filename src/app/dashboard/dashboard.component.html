@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.component.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="box">
+        <h1>Predictor</h1>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Periodicity</mat-label>
+                <mat-select panelClass="example-panel-{{value}}" [(value)]="selected">
+                  <mat-option value="1">Yearly</mat-option>
+                  <mat-option value="2">Monthly</mat-option>
+                  <mat-option value="3">Weekly</mat-option>
+                  <mat-option value="4">Daily</mat-option>
+                </mat-select>
+            </mat-form-field>
+        <div class="textbox">
+        <input type="text" placeholder="Time interval" [(ngModel)]='period' required>
+        </div>
+    </div>
+        <div class="mat-form-divide">    
+             <mat-form-field floatPlaceholder="never">
+            <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept=".csv" #fileSelect>
+            <input readonly matInput [(ngModel)]="filename" placeholder="Select file..."/>
+            <button *ngIf="this.file" (click)="deleteFile(); fileSelect.value='';" matSuffix matTooltip="Remove selected file"
+                    [matTooltipPosition]="'above'" type="button" color="warn" mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                  </button>
+            <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Select a file" [matTooltipPosition]="'above'">
+              <mat-icon>file_upload</mat-icon>
+            </button>
+        </mat-form-field>
+        <div>
+    <button (click)="fileUpload()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px; position: absolute; left: 32.5%; filter: drop-shadow(16px 16px 10px black);">
+    Predict</button>
+    </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign-up.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Sign-Up</title>
+  </head>
+  <body>
+<div class="login-box">
+  <h1>Sign-Up</h1>
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="Username" [(ngModel)]='username' required>
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input [type]="show ? 'text' : 'password'" placeholder="Password" [(ngModel)]='password' required>
+    <button type="button" class="fa-solid fa-eye" (click)="ShowPass()"></button>
+  </div>
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input [type]="cshow ? 'text' : 'password'" placeholder="Confirm password" [(ngModel)]='cpassword' required>
+    <button type="button" class="fa-solid fa-eye" style="
+    position: absolute;
+    background: transparent;
+    border-color: transparent;
+    top: 58.7%;
+    right: 1%;
+    float: right;
+    cursor: pointer;
+    color: white;
+    font-size: 0.93em;" (click)="cShowPass()"></button>
+  </div>
+  <button type="submit" class="btn" (click)="onSubmit()">Create account</button>
+  <button type="submit" class="btn" (click)="LogIn()">Sign in</button>
+</div>
+  </body>
+</html>
