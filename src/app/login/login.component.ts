@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   expression: RegExp; 
   horizontalPosition: MatSnackBarHorizontalPosition;
   verticalPosition: MatSnackBarVerticalPosition;
-  constructor(private router: Router,private _snackBar: MatSnackBar) {
+  formfile: any;
+  constructor(private router: Router,private _snackBar: MatSnackBar,private http: HttpClient,) {
   }
 
   ngOnInit(): void {
@@ -77,9 +79,22 @@ export class LoginComponent implements OnInit {
         this.message = "Signed in successfully";
         this.color = "primary";
         this.duration = 3*1000;
-        this.openSnackBar(this.message, this.color, this.duration);
-        this.check(this.username,this.password);
-        this.router.navigateByUrl('/dashboard');
+        this.formfile = new FormData();
+        this.formfile.append('username', this.username);
+        this.formfile.append('password', this.password);
+        let url = "http://localhost:5000/api/check-user"
+        this.http.post<ApiResponse>(url, this.formfile).subscribe(res => {
+          // console.log(res);
+          if (res.status.statusCode === '200' && res.data === true) {
+            console.log('User exists in the database.');
+            this.router.navigateByUrl('/dashboard');
+            this.openSnackBar(this.message, this.color, this.duration);
+            return true
+          } else {
+            this.openSnackBar("Invalid username or password",this.color,this.duration);
+            return false
+          }
+        });
       }
   }
   ShowPass(){
@@ -88,8 +103,12 @@ export class LoginComponent implements OnInit {
   SignUp(){
     this.router.navigateByUrl('/sign-up');
   }
-  check(username:string,password:string){
-
-  }
 }
 
+interface ApiResponse {
+  status: {
+    statusCode: string;
+    statusMessage: string;
+  };
+  data: boolean;
+}

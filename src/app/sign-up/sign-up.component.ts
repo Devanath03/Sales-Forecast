@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -22,8 +23,9 @@ export class SignUpComponent implements OnInit{
   expression: RegExp; 
   horizontalPosition: MatSnackBarHorizontalPosition;
   verticalPosition: MatSnackBarVerticalPosition;
+  formfile: any;
 
-  constructor(private router: Router,private _snackBar: MatSnackBar) {
+  constructor(private router: Router,private _snackBar: MatSnackBar,private http: HttpClient,) {
   }
 
   ngOnInit(): void {
@@ -49,11 +51,20 @@ export class SignUpComponent implements OnInit{
   onSubmit(){
     if(this.Validate())
     {
-      this.message = "Account created successfully";
+        this.message = "Account created successfully";
         this.color = "primary";
         this.duration = 3*1000;
+        this.formfile = new FormData();
+        this.formfile.append('username', this.username);
+        this.formfile.append('password', this.password);
+        let url = "http://localhost:5000/api/register-user"
+        this.http.post(url, this.formfile).subscribe((res) => {
         this.openSnackBar(this.message, this.color, this.duration);
         this.router.navigateByUrl('/');
+      },
+        (error) => {
+        this.openSnackBar(error.message,this.color,this.duration);
+        });
     }
   }
   Validate()

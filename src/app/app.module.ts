@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { PredictComponent } from './predict/predict.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+
 @NgModule({
   declarations: [
     AppComponent,
