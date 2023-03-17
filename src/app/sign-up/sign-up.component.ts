@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit{
     {
         this.message = "Account created successfully";
         this.color = "primary";
-        this.duration = 3*1000;
+        this.duration = 2*1000;
         this.formfile = new FormData();
         this.formfile.append('username', this.username);
         this.formfile.append('password', this.password);
