@@ -10,7 +10,7 @@
 <body>
     <div class="box">
         <h1>Predictor</h1>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="form-width">
                 <mat-label>Select Periodicity</mat-label>
                 <mat-select panelClass="example-panel-{{value}}" [(value)]="selected">
                   <mat-option value="1">Yearly</mat-option>
@@ -36,7 +36,7 @@
             </button>
         </mat-form-field>
         <div>
-    <button (click)="fileUpload()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px; position: absolute; left: 32.5%; filter: drop-shadow(16px 16px 10px black);">
+    <button (click)="fileUpload()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px; position: absolute; left: 32.5%; filter: drop-shadow(16px 16px 10px black);top: 110%;">
     Predict</button>
     </div>
       </div>

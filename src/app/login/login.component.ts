@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
             this.openSnackBar(this.message, this.color, this.duration);
             return true
           } else {
-            this.openSnackBar("Invalid username or password",this.color,this.duration);
+            this.openSnackBar("Invalid user",this.color,this.duration);
             return false
           }
         });

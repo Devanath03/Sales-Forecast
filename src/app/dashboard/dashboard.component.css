@@ -23,7 +23,7 @@ body{
     padding: 13px 0;
   }
   .textbox{
-    width: 100%;
+    width: 88.9%;
     overflow: hidden;
     font-size: 20px;
     padding: 8px 0;
@@ -41,9 +41,14 @@ body{
     margin: 0 10px;
   }
 .mat-form-divide{
-  
-  top: 60%;
   position: absolute;
-  left: 40.8%;
+  top: 59.4%;
+  left: 41%;
   filter: drop-shadow(16px 16px 10px black);
+  /* transform: translate(50%); */
+  display: flex;
+}
+
+.form-width{
+  width: 250px;
 }
