@@ -7,11 +7,11 @@ body{
     background-size: cover;
   }
 .box{
-    width: 280px;
+    width: 250px;
     position: absolute;
-    top: 37%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    margin: -50px -100px;
     color: white;
     filter: drop-shadow(16px 16px 10px black); /*doubt*/
   }
@@ -23,7 +23,7 @@ body{
     padding: 13px 0;
   }
   .textbox{
-    width: 88.9%;
+    width: 250px;
     overflow: hidden;
     font-size: 20px;
     padding: 8px 0;
@@ -42,13 +42,10 @@ body{
   }
 .mat-form-divide{
   position: absolute;
-  top: 59.4%;
-  left: 41%;
+  top: 69.5%;
+  left: 50%;
   filter: drop-shadow(16px 16px 10px black);
   /* transform: translate(50%); */
-  display: flex;
+  margin: -50px -100px;
 }
 
-.form-width{
-  width: 250px;
-}
