@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint, jsonify
 from flask_cors import CORS
 
-from serverapp.endpoints import project_api_routes
+from endpoints import project_api_routes
 
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
@@ -25,4 +25,3 @@ app = create_app()
 
 if __name__ == "__main__":
     create_app().run(host="0.0.0.0",debug=True)
-
