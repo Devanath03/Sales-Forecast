@@ -27,7 +27,7 @@ db = client.get_database('testdb') #('database name')
 
 user_collection = pymongo.collection.Collection(db, 'forecast') #(<database_name>,"<collection_name>")
 
-print("MongoDB connected Successfully")
+print("MongoDB connected Successfully...")
 
 
 def project_api_routes(endpoints):
