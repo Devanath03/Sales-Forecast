@@ -235,5 +235,3 @@ def project_api_routes(endpoints):
         return resp
                
     return endpoints
-
-
