@@ -7,14 +7,10 @@
   <title></title>
 </head>
 <body>
+  <h1>ACTUAL VS PREDICTED SALES</h1>
   <br>
-  <br>
-  <h1><b class="heading">
-    <br>
-    ACTUAL VS PREDICTED SALES</b></h1>
-  <br>
-<div style="display: flex; justify-content: center;">
-    <img src="assets/predict.png" alt="">
-  </div>
+  <div class="prediction-container">
+    <img *ngIf="predictionImageUrl" [src]="predictionImageUrl" alt="Predicted Sales">
+  </div>  
 </body>
 </html>

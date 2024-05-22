@@ -20,25 +20,25 @@
                 </mat-select>
             </mat-form-field>
         <div class="textbox">
-        <input type="text" placeholder="Time interval" [(ngModel)]='period' required>
+             <input type="text" placeholder="Time interval" [(ngModel)]='period' required>
         </div>
-    </div>
         <div class="mat-form-divide">    
-             <mat-form-field floatPlaceholder="never">
+          <mat-form-field floatPlaceholder="never">
             <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept=".csv" #fileSelect>
             <input readonly matInput [(ngModel)]="filename" placeholder="Select file..."/>
             <button *ngIf="this.file" (click)="deleteFile(); fileSelect.value='';" matSuffix matTooltip="Remove selected file"
                     [matTooltipPosition]="'above'" type="button" color="warn" mat-icon-button>
                     <mat-icon>close</mat-icon>
-                  </button>
-            <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Select a file" [matTooltipPosition]="'above'">
-              <mat-icon>file_upload</mat-icon>
             </button>
-        </mat-form-field>
-        <div>
-    <button (click)="fileUpload()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px; position: absolute; left: 32.5%; filter: drop-shadow(16px 16px 10px black);top: 110%;">
-    Predict</button>
+            <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Select a file" [matTooltipPosition]="'above'">
+                <mat-icon style="color: black;">file_upload</mat-icon>
+            </button>
+          </mat-form-field>
+          <div>
+            <button (click)="fileUpload()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px; position: absolute; left: 32.5%; filter: drop-shadow(16px 16px 10px black); top: 115%;">
+               Predict</button>
+          </div>
+        </div>
     </div>
-      </div>
 </body>
 </html>

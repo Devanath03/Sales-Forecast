@@ -4,6 +4,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition,
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { _isNumberValue } from '@angular/cdk/coercion';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -48,14 +49,13 @@ export class DashboardComponent implements OnInit{
         this.filename = this.file.name;
         this.format = this.file.name.split('.');
         if (this.format[1] != 'csv') {
-          this._snackBar.open("Please select only CSV file", "X", { duration: 3000 });
+          this.openSnackBar("Please select only CSV file", "X", this.duration);
           this.deleteFile();
         } else {
           this.formfile = new FormData();
           this.formfile.append('file', this.file);
           this.formfile.append('period', this.period);
           this.formfile.append('select', this.selected);
-
           console.log("file", this.formfile);
         }
       }
@@ -65,18 +65,29 @@ export class DashboardComponent implements OnInit{
     }
   }
 
-  fileUpload(): void{
+  fileUpload(): void {
     if (this.file && this.validate()) {
-      let url = "http://localhost:5000/api/file_upload"
-      this.http.post(url, this.formfile).subscribe((res) => {
-        this.openSnackBar("Predicted successfully", "X", this.duration);
-        this.router.navigateByUrl('/predict');
-      },
-        (error) => {
-          this.openSnackBar(error.message, "X",this.duration);
+      const formData = new FormData();
+      formData.append('file', this.file);
+      formData.append('select', this.selected);
+      formData.append('period', this.period);
+
+      const headers = new HttpHeaders();
+      headers.append('Accept', 'application/json');
+
+      this.http.post("http://localhost:5000/api/file_upload", formData, { headers, responseType: 'blob' })
+        .subscribe((response: Blob) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const imageUrl = reader.result as string;
+            this.router.navigate(['/predict'], { state: { predictionImageUrl: imageUrl } });
+          };
+          reader.readAsDataURL(response);
+        }, error => {
+          console.error('Error uploading file:', error);
+          this.openSnackBar('Error uploading file', 'X',this.duration);
         });
-    }
-    else{
+    } else {
       this.validate();
     }
   }

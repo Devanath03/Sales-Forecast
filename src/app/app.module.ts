@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { PredictComponent } from './predict/predict.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import {ActivatedRoute} from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatSelectModule,
     MatTooltipModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

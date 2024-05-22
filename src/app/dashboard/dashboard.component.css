@@ -9,7 +9,7 @@ body{
 .box{
     width: 250px;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     margin: -50px -100px;
     color: white;
@@ -42,8 +42,8 @@ body{
   }
 .mat-form-divide{
   position: absolute;
-  top: 69.5%;
-  left: 50%;
+  top: 135%;
+  left: 40%;
   filter: drop-shadow(16px 16px 10px black);
   /* transform: translate(50%); */
   margin: -50px -100px;
