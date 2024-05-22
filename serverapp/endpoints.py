@@ -16,8 +16,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from datetime import datetime, timedelta
 from bson import ObjectId
-# import matplotlib
-# # matplotlib.use('agg')
+import matplotlib
+matplotlib.use('Agg')
 
 con_string = "mongodb+srv://devanath:devanath432@cluster0.8x4ss8e.mongodb.net/?retryWrites=true&w=majority"
 
@@ -46,9 +46,10 @@ def project_api_routes(endpoints):
             time = request.form['period']  #typed value value in the time interval
             p = pd.read_csv(io.StringIO(file.read().decode('iso-8859-1')))
             print(p)
-            p.to_csv('temp_file.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+            temp_file_path = r'D:\Angular\Sales-Forecast\src\assets\temp_file.csv'
+            p.to_csv(temp_file_path, index=False, quoting=csv.QUOTE_NONNUMERIC)
             if period=='1':
-                df = pd.read_csv('temp_file.csv', parse_dates=['date'])
+                df = pd.read_csv(temp_file_path, parse_dates=['date'])
                 df.set_index('date', inplace=True)
                 df = df.resample('M').sum()
                 df['year'] = df.index.year
@@ -77,9 +78,10 @@ def project_api_routes(endpoints):
                 plt.ylabel('Sales')
                 plt.legend()
                 plt.savefig(os.path.join(save_dir, 'predict.png'))
+                plt.close()
                 return time
             if period=='2':
-                df = pd.read_csv('temp_file.csv', parse_dates=['date'])
+                df = pd.read_csv(temp_file_path, parse_dates=['date'])
                 df.set_index('date', inplace=True)
                 df = df.resample('M').sum()
                 df['year'] = df.index.year
@@ -105,9 +107,10 @@ def project_api_routes(endpoints):
                 plt.ylabel('Sales')
                 plt.legend()
                 plt.savefig(os.path.join(save_dir, 'predict.png'))
+                plt.close()
                 return time
             if period == '3':
-                df = pd.read_csv('temp_file.csv', parse_dates=['date'])
+                df = pd.read_csv(temp_file_path, parse_dates=['date'])
                 df.set_index('date', inplace=True)
                 df = df.resample('W').sum()
                 df['year'] = df.index.year
@@ -134,9 +137,10 @@ def project_api_routes(endpoints):
                 filepath = os.path.join(save_dir, filename)
                 with open(filepath, 'wb') as f:
                     plt.savefig(f)
+                plt.close()
                 return time
             if period =='4':
-                df = pd.read_csv('temp_file.csv', parse_dates=['date'])
+                df = pd.read_csv(temp_file_path, parse_dates=['date'])
                 df.set_index('date', inplace=True)
                 df = df.resample('D').sum()
                 df['year'] = df.index.year
@@ -161,6 +165,7 @@ def project_api_routes(endpoints):
                 filepath = os.path.join(save_dir, filename)
                 with open(filepath, 'wb') as f:
                     plt.savefig(f)
+                plt.close()
                 return time
             status = {
                 "statusCode":"200",

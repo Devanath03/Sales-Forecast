@@ -57,7 +57,7 @@ export class SignUpComponent implements OnInit{
         this.formfile = new FormData();
         this.formfile.append('username', this.username);
         this.formfile.append('password', this.password);
-        let url = "http://localhost:5000/api/register-user"
+        let url = "https://devanath03.pythonanywhere.com/api/register-user"
         this.http.post(url, this.formfile).subscribe((res) => {
         this.openSnackBar(this.message, this.color, this.duration);
         this.router.navigateByUrl('/');
