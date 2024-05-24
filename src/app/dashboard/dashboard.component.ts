@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit{
       const headers = new HttpHeaders();
       headers.append('Accept', 'application/json');
 
-      this.http.post("http://localhost:5000/api/file_upload", formData, { headers, responseType: 'blob' })
+      this.http.post("https://devanath03.pythonanywhere.com/api/fileupload", formData, { headers, responseType: 'blob' })
         .subscribe((response: Blob) => {
           const reader = new FileReader();
           reader.onloadend = () => {

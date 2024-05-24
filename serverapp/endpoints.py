@@ -26,8 +26,8 @@ def project_api_routes(endpoints):
         res = 'Hello world'
         return res    
 
-    @endpoints.route('/file_upload', methods=['POST'])
-    def file_upload():
+    @endpoints.route('/fileupload', methods=['GET','POST'])
+    def fileupload():
         try:
             file = request.files.get('file')
             period = request.form['select']
