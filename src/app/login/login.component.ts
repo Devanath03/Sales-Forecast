@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         this.formfile = new FormData();
         this.formfile.append('username', this.username);
         this.formfile.append('password', this.password);
-        let url = "https://devanath03.pythonanywhere.com/api/login"
+        let url = "https://devanath03.pythonanywhere.com/api/login" //http://192.168.1.2:5000/api/hello for local server
         this.http.post<ApiResponse>(url, this.formfile).subscribe(res => {
           // console.log(res);
           if (res.status.statusCode === '200' && res.data === true) {
