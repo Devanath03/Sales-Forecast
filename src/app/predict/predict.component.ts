@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-123
+1234
 @Component({
   selector: 'app-predict',
   templateUrl: './predict.component.html',
