@@ -10,7 +10,7 @@ export class PredictComponent implements OnInit {
   predictionImageUrl: string | null = null;
 
   constructor(private route: ActivatedRoute) { }
-12345
+123456
   ngOnInit(): void {
     const state = window.history.state;
     if (state && state.predictionImageUrl) {
