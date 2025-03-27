@@ -17,4 +17,4 @@ export class PredictComponent implements OnInit {
       this.predictionImageUrl = state.predictionImageUrl;
     }
   }
-}123456
+}1234567
