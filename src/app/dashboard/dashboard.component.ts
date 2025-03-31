@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit{
       formData.append('file', this.file);
       formData.append('select', this.selected);
       formData.append('period', this.period);
-12345
+123456
       const headers = new HttpHeaders();
       headers.append('Accept', 'application/json');
       //http://192.168.1.2:5000/api/fileupload ---> for local server
